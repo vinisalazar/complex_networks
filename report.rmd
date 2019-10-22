@@ -40,7 +40,7 @@ $$\sum_{w \in \Gamma(u) \cap \Gamma(v)} \frac{1}{\log |\Gamma(w)|}$$, onde $\Gam
 
 Por exemplo:
 
-$AA_{(6, 249)} \approx 0.71$
+$AA_{(2015, 2016)} \approx 0.33$
 
 Seria interessante aplicar uma métrica de redes sociais em uma rede biológica. Se os dados fossem proteínas de um patógeno, essa métrica poderia ser usada, por exemplo, para auxiliar no design de fármacos.
 
