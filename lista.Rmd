@@ -20,6 +20,7 @@ matrix_
 
 g = graph_from_adjacency_matrix(matrix_, mode="undirected")
 ```
+
 ### Questão 1
 
 Vamos supôr o seguinte grafo e sua respectiva matriz de adjacência $A$:
@@ -160,7 +161,7 @@ $APD(L_{4, 1}) = 1.\overline{6}$
 
 Grafo completo com $|V| = n$ vértices:
 
-$b_v(i, j) = 0$ pois como o grafo é completo, não existem caminhos mínimos pois todas os vértices são vizinhos
+$b_v(i, j) = 0$ pois como o grafo é completo, não existem caminhos mínimos pois todas os vértices são vizinhos.
 
 Para os outros casos, sendo $k$ a partição do grafo:
 
