@@ -20,6 +20,55 @@ output: pdf_document
 
 ### Questão 2
 
-**2.1)** Dada a seguinte função de densidade para uma distribuição de Pareto:
+Dada a seguinte função de densidade para uma distribuição de Pareto:
+$$f_X(x) = \frac{\alpha x_0^\alpha}{x^{\alpha-1}},\ {a>0,\ x_0>0}$$
 
-$$f(x; \alpha, \beta) = \alpha \frac{b^\alpha}{x^{\alpha-1}},\ {}$$
+A função de *likelihood* da distribuição de Pareto para uma amostra $X = (x_1, ..., x_n)$ é dada por:
+
+$$L(x_1, ..., x_n\ |\ \alpha) = \prod^n_{i=1}f_X(x_i)=\prod^n_{i=1}\frac{\alpha x_0^\alpha}{x_i^{a+1}}$$ que ainda pode ser simplificada para:
+
+$$\alpha^nx^{n\alpha}\prod^n_{i=1}\frac{1}{x_i^{\alpha+1}}$$
+
+Sendo sua função *log*:
+
+$$\ell(x_1,...,x_n\ |\ \alpha) = n\ln(\alpha) + 
+n\alpha\ln(x) - (\alpha + 1) \sum^n_{i=1}\ln$$
+
+Para um dado $\alpha$, fazemos a derivada de $\ell$ em função de $\alpha$ igual a $0$:
+$$\frac{\partial\ell(\alpha)}{\partial\alpha} = \frac{n}{\alpha} + n\ln(x) - \sum^n_{i=1}\ln(x_i) = 0$$
+
+Encontrando a raíz, temos $\hat\alpha$ como uma v.a. condicionada em nossas amostras, temos o seu valor como:
+
+$$\hat\alpha = \frac{n}{\sum^n_{i=1}\ln(x_i) - n\ln(\hat x)}$$.
+
+### Questão 3
+
+O coeficiente de clusterização de um vértice $v_i$ é dado por $$C_i = \frac{2e_i}{d_i(d_i - 1)}$$, aonde $e_i$ é o número de arestas entre os vizinhos de $v_i$ e $d_i$ é o grau de $v_i$. Se no modelo $G(n,p)$ as arestas aparecem com probabilidade $p$, temos $$e_i = p\times\frac{d_i(d_i-1)}{2}$$, aonde $p$ é a probabilidade de um par acontecer e o segundo termo é o número de vizinhos do vértice $i$ com grau $d_i$.
+
+Se substituirmos $e_i$ na equação do coeficiente de clusterização, temos: $$C = p\times\frac{ d_i(d_i-1)}{d_i(d_i-1)} = p$$
+
+### Questão 4
+
+### Questão 5
+
+### Questão 6
+
+### Questão 7
+
+### Questão 8
+
+**8.1)** 
+Em um grafo do modelo Watts-Strogatz, o coeficiente de clusterização $C(0)\ |\ p=0$ não depende de $N$, somente de $K$. Sendo que $C_i = \frac{E_i}{\binom{d_i}{2}}$, $C(0) = \frac{3(K-1)}{2(2K-1)} \approx \frac{3}{4}$.
+
+A distância média $\ell(0)$ depende de $N$ e de $K$:
+
+$$\ell = \frac{\sum_{u, v \in V}d(u, v)}{\binom{N}{2}}$$
+
+quanto mais o grafo cresce, se não houverem "atalhos", a distância média vai crescer também. Para um $K$ genérico, $$\ell(0) \approx \frac{N}{4K}$$ (exibe um crescimento linear com $N$).
+
+**8.2)** O modelo WS é similar ao modelo G(n,p) e possui propriedades estruturais equivalentes. No entanto, difere quanto a clusterização local e distância. Enquanto no G(n,p) estas são dadas, respectivamente, por $C=p$ e $\ell\approx\frac{\log(n)}{\log(d)}$. Enquanto no G(n,p) teremos um valor esperado de grau $E[D]=(n-1)p$, no modelo WS esse valor esperado será $E[D]=2K$. Logo dado $N$ e $K$, $m=NK$ e a densidade $p$ será de $p= \frac{2K}{N-1}\approx\frac{2K}{N}$, logo $C(1)\approx\frac{2K}{N}$, decrescendo linearmente com $N$, e $\ell(1) = \frac{\log(N)}{log(2K)}$, crescendo logaritmicamente com $N$.
+
+Com isso, a distância média decresce rapidamente a medida que $p \to 1$, enquanto a clusterização decresce mais devagar. Quando $p = 0,\ \ell(0) \approx \frac{N}{2K}$ e para $p = 1,\ \ell(1) = \frac{\log(N)}{log(2K)}$.
+
+Como os valores de $E[D]$, $C$ e $\ell$ serão parecidos no G(n,p) e no WS(N,K) onde $p=1$, o G(n,p) serve como uma boa aproximação. Além disso, o modelo G(n,p) vai possuir distribuição de graus em cauda pesada, enquanto o WS vai ter uma distribuição mais aproximada da binomial.
+
