@@ -1,0 +1,99 @@
+---
+title: "Lista de Exercícios 3"
+subtitle: "Disciplina de Redes Complexas - PESC - COPPE - UFRJ"
+author: "Vinícius W. Salazar, Prof. Daniel R. Figueiredo"
+date: "Dezembro de 2019"
+output: pdf_document
+---
+
+### Questão 1
+
+Para termos uma GCC em um grafo aleatório qualquer, precisamos da seguinte condição:
+
+$$E[d_i\ |\ i-j] > 2$$ 
+
+para todos os vértices dentro da GCC, o que é equivalente a:
+
+$$\kappa = \frac{E[d^2]}{E[d]} > 2$$
+
+Logo, digamos que temos a distribuição de grau original (antes da falha) como $P[D = \kappa]$ e a distribuição após a falha como $P[D\ ' = \kappa]$, podemos expressar a probabilidade do grau ser $\kappa\ '$ dado o grau original $\kappa$:
+
+$$P[D\ '=\kappa\ '|\ D=\kappa] = (\frac{\kappa}{\kappa\ '})(1-p)^{\kappa\ '}p^{k-k\ '}$$
+Calculando os momentos de $D[\ ']$
+
+$$E[D\ ']=E[D](1-p)$$
+$$E[D\ '^2]=E[D^2](1-p)^2+E[D]p(1-p)$$
+Finalmente, podemos determinar o ponto crítico $p_c$:
+$$p_c=1-\frac{E[D]}{E[D^2]-E[D]}$$
+**1.1 Modelo G(n,p)**
+
+Se no modelo $G(n,p)$ o grau esperado é igual a $E[D] = (n-1)p$, podemos expressar o ponto crítico como: $$p_c = 1 - \frac{(n-1)p}{((n-1)p)^2-(n-1)p}$$
+
+**1.2 Modelo BA**
+
+No modelo BA, o grau médio é dado p$\bar{d}=\frac{2m}{n}$ e a distribuição de grau.
+
+
+**1.3 Distribuição de grau zeta com parâmetro** $\alpha$
+
+Caso $\alpha < 3$, os momentos divergem e $p_c = 1$, e a GCC nunca se desintegra.
+
+Para $\alpha > 3$, quanto maior o valor de $\alpha$, menor é o valor de $p_c$.
+
+**1.4 Grafo k-regular**
+
+Assim como o $G(n,p)$, o ponto crítico será dado por:
+$$p_c = 1 - \frac{k}{k^2-k}$$
+
+### Questão 2
+
+**2.1** Quando um divórcio ocorre em um vértice $i$, ocorrem divórcios em todos os casais de $i$ até $k$.
+
+**2.2** O valor esperado será na ordem de $\log_2{k}$. Ou seja, se a rede tiver $k = 32$, o esperado será que após um divórcio teremos 16, 8, 4, 2, 1  sucessivamente até o casal $u_1$ e $v_1$ se divorciarem, logo o valor esperado será $\approx \log_2{k}$. O cenário de melhor caso será de $1$ (se o casal $u_1$ e $v_1$ se divorciarem, todos se divorciam) e o pior caso será de $k$ divórcios, quando o casal $k$ se divorcia, e depois $k-1$ ... sucessivamente até o casal $1$.
+
+**2.3** Um único divórcio entre a mulher $u_1$ e o homem $v_1$.
+
+### Questão 3
+
+Podemos considerar as ideias de duas formas: separadas ou isoladas, e de duas formas: em uma rede com distribuição homogênea (Poisson, binomial) ou de cauda pesada (BA, distribuição de grau Zeta).
+
+Para redes de distribuição homogênea, a condição $1)$ faz pouca diferença, pois ela só será útil quando estivermos no vértice vizinho do resultado desejado da busca, logo, pode encurtar o caminho em no máximo 1 passo. Isso pode ser uma desvantagem se o custo de armazenar a informação dos vizinhos for considerável, dado que fará uma diferença muito pequena. Considerando a condição $2)$, o cenário será parecido: fará pouca diferença dada que a distribuição da rede é homogênea. Na verdade, pode trazer uma pequena desvantagem uma vez que se o resultado da busca estiver em um vértice de grau pequeno, será menor a chance de alcançá-lo. Considerando as condições $1)$ e $2)$ juntas, também teremos pouca diferença no desempenho, pois se o resultado estiver em um vértice de grau pequeno, cujos vizinhos também tem grau pequeno, caíremos no mesmo problema da condição $2)$ isolada.
+
+Para redes com distribuição em lei de potência, a condição $1)$ isolada pode ser vantajosa, pois existem alguns poucos vértices com um grau muito grande, e se nosso resultado for vizinho de um desses *"hubs"*, chegaremos nele rapidamente. No entanto, isso também pode causar um congestionamento na rede, uma vez que os *hubs* vão ter que carregar uma carga alta de informações (de todos os seus vizinhos), e é justamente por eles que existe um tráfego maior, pois é mais alta a chance de estar em um caminho mínimo. A condição $2)$ isolada nessa rede trará uma grande desvantagem, pois o passeio aleatório terá a tendência de ficar limitado entre os vértices de grau alto e, se o resultado da busca estiver em um vértice de grau baixo, será difícil alcançá-lo. No entanto, juntar as condições $1)$ e $2)$ nessa rede pode trazer grandes vantagens, pois os *hubs* vão armazenar as informações de muitos vizinhos, o que pode encurtar significativamente os caminhos mínimos.
+
+### Questão 4
+
+Podemos simplificar a modularidade de uma partição como:
+
+$$M = \sum_k\left(\frac{m_k}{m}-\left(\frac{d_k}{2m}\right)^2\right)$$
+
+aonde $m_k$ é o número de arestas dentro da parte $k$, $d_k$ é a soma dos graus dos vértices da parte $k$.
+
+**4.1**
+
+Considerando essas condições, substituindo os valores temos:
+
+$$M =  N_c\left( \frac{\binom{k}{2}}{N_c\binom{k}{2}+N_c} - \left( \frac{k(k-1)+2}{2(N_c\binom{k}{2} + N_c)}\right)^2 \right)$$
+Se tivermos, por exemplo, $N_c = 3$ e $k = 4$, $M \approx 0.55$
+
+**4.2**
+
+Basta substituirmos $m_k$ e $d_k$:
+
+$$M = \frac{N_c}{2} \left( \frac{2\binom{k}{2} + 1}{N_c\binom{k}{2} + N_c} - \left( \frac{2k(k-1) + 3}{2(N_c\binom{k}{2} + N_c)} \right) \right)$$
+
+### Questão 5
+
+Em um sistema SI, temos, basicamente:
+
+$$I(t) = \beta IS$$
+
+Em nosso modelo, temos mais um parâmetro $a$ que captura as arestas entre possíveis animais. Precisamos, ainda, levar em conta a direcionalidade das conexões, pois $\beta_{i\ \rightarrow\ j}$ pode ser diferente de $\beta_{j\ \rightarrow\ i}$. Derivando $I(t)$ em função de $t$, temos:
+
+$$\frac{\partial I(t)}{\partial t} = \sum_i \frac{\partial I_i(t)}{\partial t}$$
+
+$$\frac{\partial I_i(t)}{\partial t} = \sum_j\alpha_{j,i}\beta_{j,i}I_j(t)S_i(t)$$
+
+Substituindo na primeira equação:
+
+$$\frac{\partial I(t)}{\partial t} = \sum_i \sum_j\alpha_{j,i}\beta_{j,i}I_j(t)S_i(t)$$

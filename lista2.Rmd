@@ -47,14 +47,6 @@ O coeficiente de clusterização de um vértice $v_i$ é dado por $$C_i = \frac{
 
 Se substituirmos $e_i$ na equação do coeficiente de clusterização, temos: $$C = p\times\frac{ d_i(d_i-1)}{d_i(d_i-1)} = p$$
 
-### Questão 4
-
-### Questão 5
-
-### Questão 6
-
-### Questão 7
-
 ### Questão 8
 
 **8.1)** 
