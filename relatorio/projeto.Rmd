@@ -1,0 +1,38 @@
+---
+title: "Avaliando a diversidade genética da bactéria *Vibrio coralliilyticus* através de uma rede particionada"
+subtitle: "Disciplina de Redes Complexas - PESC - COPPE - UFRJ"
+author: "Vinícius W. Salazar, Prof. Daniel R. Figueiredo"
+date: "Outubro de 2019"
+output: pdf_document
+---
+
+### Resumo
+
+### Introdução
+Estudos de genômica comparativa têm aplicações em diversas áreas das ciências da vida, como epidemiologia [1], taxonomia [2] e biotecnologia [3], entre outras. Uma estratégia comum empregada nesses estudos é a análise do repertório de genes de uma espécie. Esse conjunto que compreende todos os genes de todas os indivíduos da espécie define o **pangenoma** dessa espécie [4]. O pangenoma de um determinado grupo vai incluir genes que ocorrem em alta frequência, ou seja, são comuns a todos os indivíduos (o genoma "core", ou persistente), em média frequência (genoma "shell", ou intermediário) e em baixa frequência (genoma "cloud", ou acessório), sendo geralmente únicos de um indíviduo ou cepa. Dessa forma, o pangenoma pode ser representado por um diagrama de Venn (Figura 1) (retirada de [5]).
+
+No entanto, um problema fundamental para análises de pangenoma é justamente a determinação de qual desses grupos ("core", "shell" ou "cloud") cada gene pertence. Em particular, o genoma "shell" e "cloud" são úteis para entender a adaptação de organismos, logo é importante a sua identificação [6]. Se usarmos uma definição estritas dessas partições, como por exemplo: 'genoma "core" é composto pelas famílias de genes presentes em >99% dos genomas', topamos com o efeito de que, a medida que são adicionados genomas, o genoma "core" diminui. De fato, atualmente estudos de genômica bacteriana comumente envolvem centenas a milhares de genomas, logo usar definições estritas das partições torna-se uma limitação na análise do pangenoma. Um outra limitação de estudos em larga escala é a representação do pangenoma: uma vez que espécies tem muitos genes homólogos, é mais conveniente demonstrar a informação sobreposta entre esses genes de uma forma mais compacta, invés de simplesmente concatenar todos os genomas. Diante disso, a representação de pangenomas através de grafos torna-se interessante, pois permite que as homologias e variações entre genomas sejam representadas sem redundância [7].
+
+No presente trabalho, demonstraremos uma aplicação de um novo método de representação de pangenomas. O modelo PPanGGOLiN (*Partitioned PanGenome Graph of Linked Neighbours) [8] foi publicado recentemente e apresenta uma abordagem promissora para a análise e representação de pangenomas. O modelo representa o pangenoma como um grafo, onde cada vértice é uma família de genes homólogos e cada aresta é uma relação de "contiguidade genética" (ou seja, se as sequências dos genes estão adjacentes na sequência do genoma completo). A abordagem do PPanGGOLiN "preenche a lacuna entre a abordagem pangenômica padrão (que usa um conjunto de famílias de genes independentes e isoladas) e um grafo de pangenoma a nível de sequência". A vantagem de se usar um grafo a nível de genes, invés de sequências, é a de que isso permite uma representação muito mais compacta em disco, pois os clados são tratados pela presência e ausência (P/A) de genes. Embora isso ignore polimorfismos entre alelos e a presença regiões intergênicas, a abordagem de P/A é adequada para genomas bacterianos, onde o repertório dos genes costuma ser muito mais importante do que polimorfismos e as regiões intergênicas são muito pequenas [8]. Além disso, outra inovação do modelo é a definição de partições usando não somente a frequência de famílias de genes, mas uma combinação dessa informação com o grafo de contiguidade genética para fazer a classificação.
+
+![Entendendo o pangenoma como um diagrama de Venn: para um determinado grupo, seu pangenoma compreende os genes comuns a grande maioria dos indivíduos (genoma core), genes únicos de cada indivíduo (genoma acessório), e genes em frequências intermediárias.](~/Bio/complex_networks/relatorio/img/a2ff06bd-9f89-4d54-8ff1edff8b21426b.png)
+
+
+### Métodos
+Para utilização do método PPanGGOLiN, separamos 15 genomas da bactéria *Vibrio coralliilyticus* (Ben-Haim 2003) [9]
+
+### Resultados
+
+### Discussão
+
+### Referências
+
+[1] J. L. Gardy and N. J. Loman, “Towards a genomics-informed, real-time, global pathogen surveillance system,” Nat. Rev. Genet., vol. 19, no. 1, pp. 9–20, 2018.
+[2] C. C. Thompson, L. Chimetto, R. A. Edwards, J. Swings, E. Stackebrandt, and F. L. Thompson, “Microbial genomic taxonomy,” BMC Genomics, vol. 14, no. 1, p. 913, 2013.
+[3] Z. Sun et al., “Expanding the biotechnology potential of lactobacilli through comparative genomics of 213 strains and associated genera,” Nat. Commun., vol. 6, p. 8322, 2015.
+[4] H. Tettelin et al., “Genome analysis of multiple pathogenic isolates of Streptococcus agalactiae: Implications for the microbial ‘pan-genome,’” Proc. Natl. Acad. Sci., vol. 102, no. 45, p. 16530, 2005.
+[5] C. G. P. McCarthy and D. A. Fitzpatrick, “Pan-genome analyses of model fungal species,” Microb. Genomics, vol. 5, no. 2, 2019.
+[6] O. Lukjancenko, T. M. Wassenaar, and D. W. Ussery, “Comparison of 61 Sequenced Escherichia coli Genomes,” Microbial Ecology. 2010.
+[7] T. Marschall et al., “Computational pan-genomics: Status, promises and challenges,” Brief. Bioinform., 2018.
+[8] G. Gautreau et al., “PPanGGOLiN: Depicting microbial diversity via a Partitioned Pangenome Graph,” bioRxiv, p. 836239, 2019.
+[9] Y. Ben-Haim et al., “Vibrio coralliilyticus sp. nov., a temperature-dependent pathogen of the coral Pocillopora damicornis,” Int. J. Syst. Evol. Microbiol., vol. 53, no. 1, pp. 309–315, 2003.
