@@ -1,5 +1,5 @@
 ---
-title: "Avaliando a diversidade genética da bactéria *Vibrio coralliilyticus* através de uma rede particionada"
+title: "Análise de diversidade genética microbiana através de redes particionadas"
 subtitle: "Disciplina de Redes Complexas - PESC - COPPE - UFRJ"
 author: "Vinícius W. Salazar, Prof. Daniel R. Figueiredo"
 date: "Outubro de 2019"
@@ -32,9 +32,6 @@ Os 15 genomas utilizados para o estudo (Tabela S1) têm um tamanho média de $5.
 * Diâmetro da GCC: $286$
 * Média dos caminhos mínimos na GCC: $56.68$
 * Média de clustering: $0.05$
-
-
-
 
 ### Discussão
 
@@ -118,11 +115,19 @@ __Processamento *ad hoc*.__ Quaisquer outras etapas de processamento após execu
 
 ###
 
-![Entendendo o pangenoma como um diagrama de Venn: para um determinado grupo, seu pangenoma compreende os genes comuns a grande maioria dos indivíduos (genoma core), genes únicos de cada indivíduo (genoma acessório), e genes em frequências intermediárias.](~/Bio/complex_networks/relatorio/img/a2ff06bd-9f89-4d54-8ff1edff8b21426b.png)
+![Entendendo o pangenoma como um diagrama de Venn. Para um determinado grupo, seu pangenoma compreende os genes comuns a grande maioria dos indivíduos (genoma core), genes únicos de cada indivíduo (genoma acessório), e genes em frequências intermediárias.](~/Bio/complex_networks/projeto/img/figure_1.png)
 
 
-![Representação gráfica do modelo PPanGGOLiN em 4 genomas: Esse método requer genomas anotados da mesma espécie. O grafo de pangenoma é construído combinando genes homólogos com sua vizinhança genômica. Paralelamente é construída uma matriz P/A de famílias de genes x genomas. Esse pangenoma é dividido em $K$ partições (nesse exemplo, $K = 3$) ao estimar-se os melhores parâmetros através do algoritmo EM. Esse método envolve a maximização da verossimilhança de um modelo multivariado BMM que é suavizado pelo espalhamento das partições ao longo do grafo que usa o MRF, penalizando famílias classificadas inadequadamente de acordo com o grafo. Esse processo é repetido até o um trade-off maximizando a verossimilhança geral. O resultado é um grafo particionado do pangenoma, classificando as famílias nas partições. Adaptado de [8]](~/Bio/complex_networks/relatorio/img/figure_s1.png)
+![Representação gráfica do modelo PPanGGOLiN em 4 genomas. Esse método requer genomas anotados da mesma espécie. O grafo de pangenoma é construído combinando genes homólogos com sua vizinhança genômica. Paralelamente é construída uma matriz P/A de famílias de genes x genomas. Esse pangenoma é dividido em $K$ partições (nesse exemplo, $K = 3$) ao estimar-se os melhores parâmetros através do algoritmo EM. Esse método envolve a maximização da verossimilhança de um modelo multivariado BMM que é suavizado pelo espalhamento das partições ao longo do grafo que usa o MRF, penalizando famílias classificadas inadequadamente de acordo com o grafo. Esse processo é repetido até o um trade-off maximizando a verossimilhança geral. O resultado é um grafo particionado do pangenoma, classificando as famílias nas partições. Adaptado de [8]](~/Bio/complex_networks/projeto/img/figure_2.png)
 
+![Distribuição de grau da rede. A) representa a frequência. B) representa a função de distribuição cumulativa (CDF) e C) representa a CDF complementar (CCDF) a seta indica o gap na distribuição de grau. Todas as distribuições estão em escala log-log](~/Bio/complex_networks//projeto/img/figure_3.png)
+
+![Distribuição de excentricidade da rede. A maior parte dos vértices possuem um valor baixo de excentricidade, com alguns poucos vértices estando mais distantes.](~/Bio/complex_networks/projeto/img/figure_4.png)
+![Distribuição em formato de U da frequência das famílias de genes nos 15 genomas. A maior fração de vértices (~ 61%) fica na partição "cloud", enquanto ~36% está na partição "core" e ~3% está na partição "shell". A partição "shell", que contém genes que aparecem com frequência intermediária, é de interesse, pois permite o diagnóstico de populações com traços distintos.](~/Bio/complex_networks/projeto/img/figure_5.png)
+![Heatmap da matriz P/A de genes. Pode-se observar uma barra vertical que contém a distribuição das famílias de genes (vértices) nas partições.](~/Bio/complex_networks/projeto/img/figure_6.png)
+![Curvas de rarefação. A medida que são adicionados genomas, o genoma acessório aumenta, e o genoma persistente ("core") e o "shell" diminuem sutilmente. Mesmo com um baixo $N$, o conjunto de dados de *Vibrio coralliilyticus* demonstram quase uma assimptota, demonstrando uma boa cobertura da diversidade genética do grupo.](~/Bio/complex_networks/projeto/img/figure_7.png)
+
+![Visualização da rede com Gephi, layout ForceAtlas. O tamanho dos vértices corresponde ao número $i$ de genes em cada família ($1 \leq i \leq 15$). Pode-se observar a partição "core" no 'núcleo' da rede, o genoma "shell" em uma porção intermediária](~/Bio/complex_networks/projeto/img/figure_8.png)
 
 
 ###
